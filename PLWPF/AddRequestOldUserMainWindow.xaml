@@ -1,0 +1,88 @@
+﻿<Window x:Class="PLWPF.AddRequestOldUserMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d" Icon="newIcon.jpg"
+        Title="AddRequestOldUserMainWindow" MinHeight="720" MinWidth="1020" Height="700" Width="1000" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="AddNewRequest" Content="Add new request" HorizontalAlignment="Left" VerticalAlignment="Top" Width="159" Height="44" Margin="93,601,0,0" Click="AddNewRequestButton" FontFamily="Tempus Sans ITC" FontSize="20"/>
+        <!--<Button x:Name="Update" Content="UpdateInfo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="46,55,0,0" Click="updateClickButton"/>-->
+        <Button x:Name="UpdateCode" Content="UpdateCode" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="107,386,0,0" Click="updateCodeButton" Height="36" FontFamily="Tempus Sans ITC" FontSize="18" Grid.Column="2"/>
+        <Label x:Name="OldPassword" VerticalAlignment="Center" Margin="36,202,0,441" HorizontalAlignment="Left" Grid.Column="2" Content="Old password:" Height="46" Width="122" FontFamily="Tempus Sans ITC" FontSize="20"/>
+        <TextBox x:Name="oldPass" Width="120" VerticalAlignment="Center" Margin="180,201,0,442" Height="46" HorizontalAlignment="Left" LostFocus="OldPassLostFocus" GotFocus="OldPassGotFocus" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" RenderTransformOrigin="0.767,0.565" Grid.Column="2"/>
+        <Label x:Name="NewPass" VerticalAlignment="Center" Margin="36,289,0,352" HorizontalAlignment="Left" Grid.Column="2" Content="New password" Height="48" Width="129" FontFamily="Tempus Sans ITC" FontSize="20" />
+        <TextBox x:Name="newPass" Width="120" VerticalAlignment="Center" Margin="180,289,0,356" Height="44" HorizontalAlignment="Left" LostFocus="NewPassLostFocus" GotFocus="NewPassGotFocus" Text="{Binding Code, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2"/>
+
+        <!--<Label x:Name="MailAddress" VerticalAlignment="Center" Margin="10,346,0,326" HorizontalAlignment="Left" Grid.Column="0" Content="Mail Address:" Height="26" Width="81" />
+        <TextBox x:Name="mailAddressTextBox" Width="120" VerticalAlignment="Center" Margin="110,348,0,326" Height="24" HorizontalAlignment="Left" LostFocus="MailAddressLostFocus" GotFocus="MailAddressGotFocus" Text="{Binding MailAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+        <Label x:Name="PrivateName" VerticalAlignment="Center" Margin="10,98,0,295" HorizontalAlignment="Left" Grid.Column="0" Content="Private Name:" Height="26" Width="84"/>
+        <TextBox x:Name="privateNameTextBox" Width="120" VerticalAlignment="Center" Margin="110,240,0,434" Height="24" HorizontalAlignment="Left" LostFocus="PrivateNameLostFocus" GotFocus="PrivateNameGotFocus" Text="{Binding PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" RenderTransformOrigin="0.595,-0.335"/>
+        <Label x:Name="FamilyName" VerticalAlignment="Center" Margin="13,292,0,380" HorizontalAlignment="Left" Grid.Column="0" Content="Family Name:" Height="26" Width="81"/>
+        <TextBox x:Name="familyNameTextBox" Width="120" VerticalAlignment="Bottom" Margin="110,0,0,380" Height="24" HorizontalAlignment="Left" LostFocus="FamilyNameLostFocus" GotFocus="FamilyNameGotFocus" Text="{Binding FamilyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>-->
+        <ListView x:Name="GuestRequestList" BorderBrush="LightBlue" Margin="64,116,63,187" MouseDoubleClick="mouseDoubleClick" RenderTransformOrigin="0.5,0.5" >
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.377"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Key:" DisplayMemberBinding="{Binding GuestRequestKey}" Width="100"/>
+                    <GridViewColumn Header="Status:" DisplayMemberBinding="{Binding Status}" Width="100"/>
+                </GridView>
+            </ListView.View>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Status}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+        <Button x:Name="MoreInfo" Content="MoreInfo" FontFamily="Tempus Sans ITC" FontSize="18" Click="MoreInfoClick" Margin="93,540,204,105" IsEnabled="False" Height="44" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.237"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.329"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <!--<Button x:Name="Remove" Content="remove"  FontFamily="MathJax_Main" FontSize="18" Click="RemoveClick" Margin="725,529,87,127" IsEnabled="False" RenderTransformOrigin="0.5,0.5" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.06"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>-->
+        <Border x:Name="NotesToWebsiteManager" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Visible" Margin="329,0,321,147" Height="272" Width="362" Grid.ColumnSpan="3">
+            <StackPanel Margin="22,32,27,59">
+                <TextBlock Text="Enter your review: " Height="29" TextAlignment="Center" FontFamily="MathJax_Main" FontSize="20"/>
+                <TextBox x:Name="TextBlock_NoteToWebsiteManager" Height="87" Padding="2" Margin="0 10"/>
+                <Button x:Name="Submit" Content="Submit"  FontFamily="MathJax_Main" FontSize="18" Click="sendButton_Click"/>
+            </StackPanel>
+        </Border>
+        <TextBlock x:Name="TextBlockReview" Width="206" VerticalAlignment="Bottom" Margin="89,0,0,134" Height="52" HorizontalAlignment="Left" Text="{Binding message}" Grid.Column="1" FontFamily="Ink Free" FontSize="16" />
+        <TextBlock HorizontalAlignment="Left" Margin="79,64,0,0" TextWrapping="Wrap" Text="My previus requests:" VerticalAlignment="Top" Height="34" Width="173" FontFamily="Tempus Sans ITC" FontSize="20" RenderTransformOrigin="-2.564,-0.382"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="73" Margin="27,143,0,0" TextWrapping="Wrap" Text="The website team put a lot of time and effort to make the website suited for all." VerticalAlignment="Top" Width="289" Grid.Column="1" FontFamily="Ink Free" FontSize="18"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="34,221,0,0" TextWrapping="Wrap" Text="It would be much appreciated if you could spare a few moments to add a review." VerticalAlignment="Top" Height="72" Width="287" Grid.Column="1" FontFamily="Ink Free" FontSize="18"/>
+        <Button x:Name="backToHomePage" Content="Back to home page" HorizontalAlignment="Left" Margin="244,626,-29,0" VerticalAlignment="Top" Width="122" Height="28" Click="homePageClick" Grid.Column="2"/>
+
+    </Grid>
+</Window>

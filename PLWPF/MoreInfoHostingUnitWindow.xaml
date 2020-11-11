@@ -1,0 +1,61 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.MoreInfoHostingUnitWindow"
+        mc:Ignorable="d" Icon="newIcon.jpg"
+        Title="MoreInfoHostingUnitWindow" Height="450" Width="500">
+    <Window.Resources>
+        <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+
+        <Grid x:Name="hostingUnitGrid" VerticalAlignment="Top" Margin="32,22,0,0" HorizontalAlignment="Left" DataContext="{StaticResource hostingUnitViewSource}" Height="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Area:"/>
+            <TextBlock x:Name="areaTextBlock" Width="120" VerticalAlignment="Center" Grid.Row="4" Margin="3" Text="{Binding Area}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1">
+            </TextBlock>
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Childrens Attractions:"/>
+            <TextBlock x:Name="childrensAttractionsTextBlock" Width="120" VerticalAlignment="Center" Grid.Row="3" Margin="3" Text="{Binding ChildrensAttractions}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1">
+            </TextBlock>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Garden:"/>
+            <TextBlock x:Name="gardenTextBlock" Width="120" VerticalAlignment="Center" Grid.Row="2" Margin="3" Text="{Binding Garden}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1">
+            </TextBlock>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Key:"/>
+            <TextBlock x:Name="hostingUnitKeyTextBlock" Width="120" VerticalAlignment="Center" Text="{Binding HostingUnitKey}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Name:"/>
+            <TextBlock x:Name="hostingUnitNameTextBlock" Width="120" VerticalAlignment="Center" Text="{Binding HostingUnitName}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Jacuzzi:"/>
+            <TextBlock x:Name="jacuzziTextBlock" Width="120" VerticalAlignment="Center" Grid.Row="5" Margin="3" Text="{Binding Jacuzzi}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Pool:"/>
+            <TextBlock x:Name="poolTextBlock" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="3" Text="{Binding Pool}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Spooky:"/>
+            <TextBlock x:Name="spookyTextBlock" Width="120" VerticalAlignment="Center" Grid.Row="7" Margin="3" Text="{Binding Spooky}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Type:"/>
+            <TextBlock x:Name="typeTextBlock" Width="120" VerticalAlignment="Center" Grid.Row="8" Margin="3" Text="{Binding Type}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1"/>
+        </Grid>
+        <StackPanel Margin="313,233,-113,58">
+            <Image x:Name="hotelImage" Source="hotelPicture.jpg"
+                           MinHeight="100" MinWidth="100"
+                               Stretch="Fill" Height="116" Margin="-13,0,153,0"/>
+        </StackPanel>
+        <Button Content="close" HorizontalAlignment="Left" Margin="195,360,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Calendar Name="Diary" HorizontalAlignment="Left" Margin="287,46,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

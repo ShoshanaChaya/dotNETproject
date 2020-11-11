@@ -1,0 +1,75 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddHostingUnitWindow"
+        mc:Ignorable="d" Icon="newIcon.jpg"
+        Title="AddHostingUnitWindow" Height="450" Width="300" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="hostViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Host}, CreateList=True}"/>
+    </Window.Resources>
+
+    <Grid Margin="-2,0,2,0">
+
+        <Grid x:Name="addHostingUnit" VerticalAlignment="Top" Margin="10,24,0,0" HorizontalAlignment="Left" Height="270" Width="270">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="138"/>
+                <ColumnDefinition Width="Auto" MinWidth="158"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="2,4,0,4" HorizontalAlignment="Left" Grid.Column="1" Content="Area:" Height="26" Width="37"/>
+            <ComboBox x:Name="areaComboBox" Width="120" VerticalAlignment="Center" Grid.Row="0" Margin="2,6,0,6" Height="22" HorizontalAlignment="Left" SelectedItem="{Binding area}" Grid.Column="2"></ComboBox>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="2,3,0,4" HorizontalAlignment="Left" Grid.Column="1" Content="Childrens Attractions:" Height="26" Width="123"/>
+            <ComboBox x:Name="childrensAttractionsComboBox" Width="120" VerticalAlignment="Center" Grid.Row="1" Margin="3,5,0,6" ItemsSource="{Binding}" Height="22" HorizontalAlignment="Left"  Grid.Column="2"></ComboBox>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="2,4,0,3" HorizontalAlignment="Left" Grid.Column="1" Content="Garden:" Height="26" Width="51"/>
+            <ComboBox x:Name="gardenComboBox" Width="120" VerticalAlignment="Center" Grid.Row="2" Margin="3,6,0,5" ItemsSource="{Binding}" Height="22" HorizontalAlignment="Left" Grid.Column="2"></ComboBox>
+            <Label x:Name="HostingunitName" VerticalAlignment="Center" Grid.Row="4" Margin="2,4,0,3" HorizontalAlignment="Left" Grid.Column="1" Content="Hosting Unit Name:" Height="26" Width="114"/>
+            <TextBox x:Name="hostingUnitNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="2" GotFocus="GotFocusAddHostingUnit" LostFocus="LostFocusAddHostingUnit"/>
+            <Label x:Name="hostingUnitLable" Content=""  FontSize="11" Foreground="Red" HorizontalAlignment="Left" Margin="106,28,0,0" Grid.Row="4" VerticalAlignment="Top" Width="153" Height="22" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Grid.Column="1"></Label>
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="2,3,0,3" HorizontalAlignment="Left" Grid.Column="1" Content="Jacuzzi:" Height="26" Width="49"/>
+            <ComboBox x:Name="jacuzziComboBox" Width="120" VerticalAlignment="Center" Grid.Row="5" Margin="3,5,0,5" ItemsSource="{Binding}" Height="22" HorizontalAlignment="Left" Grid.Column="2"></ComboBox>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="2,3,0,3" HorizontalAlignment="Left" Grid.Column="1" Content="Pool:" Height="26" Width="36"/>
+            <ComboBox x:Name="poolComboBox" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="3,5,0,5" ItemsSource="{Binding}" Height="22" HorizontalAlignment="Left" Grid.Column="2"></ComboBox>
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="2,3,0,3" HorizontalAlignment="Left" Grid.Column="1" Content="Spooky:" Height="26" Width="52"/>
+            <ComboBox x:Name="spookyComboBox" Width="120" VerticalAlignment="Center" Grid.Row="7" Margin="3,5,0,5" ItemsSource="{Binding}" Height="22" HorizontalAlignment="Left" Grid.Column="2"></ComboBox>
+            <Label VerticalAlignment="Center" Grid.Row="8" Margin="2,3,0,3" HorizontalAlignment="Left" Grid.Column="1" Content="Type:" Height="26" Width="37"/>
+            <ComboBox x:Name="typeComboBox" Width="120" VerticalAlignment="Center" Grid.Row="8" Margin="3,5,0,5" ItemsSource="{Binding}" Height="22" HorizontalAlignment="Left" Grid.Column="2"></ComboBox>
+        </Grid>
+        <Button x:Name="buttonAddHostingunit" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Margin="90,361,0,0" Height="28" Click="Button_Click" IsDefault="True"/>
+        <Grid x:Name="grid1" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="-51,273,0,-88" VerticalAlignment="Top" Height="184" Width="322" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.319"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Border x:Name="ImageBorder" BorderThickness="2" BorderBrush="Transparent"  Margin="23,3,171,93" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <Image x:Name="HotelImage" Source="HotelPicture.Jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="28,8,33,8"/>
+            </Border>
+            <Button x:Name="Button_UploadImage" Content="Add an image" Click="Button_Click_UploadImage" Margin="187,37,24,0" Height="28" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</Window>

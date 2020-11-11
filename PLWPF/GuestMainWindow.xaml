@@ -1,0 +1,156 @@
+﻿<Window x:Class="PLWPF.GuestMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d" Icon="newIcon.jpg"
+        Title="GuestMainWindow" MinHeight="720" MinWidth="1020" Height="700" Width="1000" WindowState="Maximized">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="booleanToVisiblty"/>
+    </Window.Resources>
+
+    <Grid RenderTransformOrigin="0.617,0.496">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Height="120" Margin="109,35,0,0" TextWrapping="Wrap" Text="Reviews on our  website:" VerticalAlignment="Top" Width="249" FontFamily="Script MT Bold" FontSize="48" Grid.Column="1"/>
+        <ListView x:Name="Reviews" BorderBrush="LightBlue" Margin="168,218,213,168" Grid.Column="1"  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date:" DisplayMemberBinding="{Binding date}" Width="100"/>
+                    <GridViewColumn Header="Review:" DisplayMemberBinding="{Binding message}" Width="600"/>
+                </GridView>
+            </ListView.View>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+
+        <Button x:Name="OldGuest" Content="Old User" Margin="254,600,136,59" FontSize="24" FontFamily="Broadway" Click="OldUserButton_Click">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property = "Foreground" Value="DodgerBlue"/>
+                                        <Setter Property="Opacity" Value="0.8" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="GoodJob" Content="Good Job!!" Margin="275,456,123,204" FontSize="16" FontFamily="Broadway" Visibility="{Binding ElementName=checkBoxTerms, Path=IsChecked, Converter={StaticResource booleanToVisiblty}}">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ButtonTerms" Content="Terms of Use" Margin="87,403,262,246" FontSize="20" FontFamily="Britannic Bold" Click="TermsUserButton_Click">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property = "Foreground" Value="DodgerBlue"/>
+                                        <Setter Property="Opacity" Value="0.8" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <CheckBox x:Name="checkBoxTerms" Content="I agree" HorizontalAlignment="Left" Margin="298,447,0,0" VerticalAlignment="Top" Height="30" Width="102" FontFamily="Britannic Bold" FontSize="20"/>
+        <TextBlock x:Name="textBlockTerms" HorizontalAlignment="Left" Margin="35,394,0,0" TextWrapping="Wrap" Text="Do you agree to the " VerticalAlignment="Top" Height="36" Width="209" FontFamily="Britannic Bold" FontSize="20"/>
+        <Button x:Name="NewGuest" Content="New User" Margin="66,600,320,61" FontSize="24" FontFamily="Broadway"  RenderTransformOrigin="1.319,1.116"  Click="NewUserButton_Click" IsEnabled="True">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property = "Foreground" Value="DodgerBlue"/>
+                                        <Setter Property="Opacity" Value="0.8" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="instructionsTextBlock" HorizontalAlignment="Left" Margin="45,35,0,0" TextWrapping="Wrap" Text="Hello, and thank you for choosing our website to plan your next vacation." VerticalAlignment="Top" Height="87" Width="254" FontFamily="Tempus Sans ITC" FontSize="20"/>
+        <TextBlock x:Name="instructionsTextBlock2" HorizontalAlignment="Left" Margin="45,128,0,0" TextWrapping="Wrap" Text="If you are a new user, please read our terms of use before continuing to use our website." VerticalAlignment="Top" Height="107" Width="254" FontFamily="Tempus Sans ITC" FontSize="20"/>
+        <TextBlock x:Name="instructionsTextBlock3" HorizontalAlignment="Left" Margin="45,263,0,0" TextWrapping="Wrap" Text="If you are an old user, welcome back." VerticalAlignment="Top" Height="62" Width="254" FontFamily="Tempus Sans ITC" FontSize="20"/>
+        <TextBlock x:Name="instructionsTextBlock4" HorizontalAlignment="Left" Margin="45,330,0,0" TextWrapping="Wrap" Text="We hope you will enjoy your vacation!!" VerticalAlignment="Top" Height="59" Width="254" FontFamily="Tempus Sans ITC" FontSize="20"/>
+        <Button x:Name="backToHomePage" Content="Back to home page" Grid.Column="1" HorizontalAlignment="Left" Margin="411,632,-27,0" VerticalAlignment="Top" Width="122" Height="28" RenderTransformOrigin="1.807,0.696" Click="BackToHomePage_Click"/>
+
+    </Grid>
+</Window>

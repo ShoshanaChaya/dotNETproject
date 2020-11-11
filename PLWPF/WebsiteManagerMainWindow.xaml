@@ -1,0 +1,79 @@
+﻿<Window x:Class="PLWPF.WebsiteManagerMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d" Icon="newIcon.jpg"
+        Title="WebsiteManagerMainWindow" MinHeight="720" MinWidth="1020" Height="700" Width="1000" WindowState="Maximized">
+    <Window.Resources>
+        <!--<Grid x:Key="MostWantedAreaGrid" HorizontalAlignment="Left" Height="100" Margin="47,302,0,0" VerticalAlignment="Top" Width="168">-->
+        <!--<TextBlock x:Name="amountOfGains" HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" Text="The most visited area:" VerticalAlignment="Top" Width="138"/>-->
+        <!--<TextBlock x:Name="showGains" HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="a" VerticalAlignment="Top" Height="20" Width="133"/>-->
+        <!--</Grid>-->
+    </Window.Resources>
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="HostingUnitsList" BorderBrush="LightBlue" Margin="73,141,67,184" MouseDoubleClick="mouseDoubleClick" Grid.Column="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="headerKey" Header="Key:" DisplayMemberBinding="{Binding HostingUnitKey}" Width="100"/>
+                    <GridViewColumn x:Name="headerName" Header="Name:" DisplayMemberBinding="{Binding HostingUnitName}" Width="100"/>
+                </GridView>
+            </ListView.View>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+        <Button  x:Name="mouseMoreInfo" Content="More information" HorizontalAlignment="Left" Margin="112,545,0,0" VerticalAlignment="Top" Width="118" Height="28" IsEnabled="False" Click="mouseMoreInfoClick" Grid.Column="2"/>
+        <ComboBox x:Name="reviewsOptions" HorizontalAlignment="Left" Margin="151,78,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Path=reviewsOptions}" SelectionChanged="ReviewsOptionsComboBox_SelectionChanged" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,30,0,0" TextWrapping="Wrap" Text="Website reviews" VerticalAlignment="Top" Height="48" Width="175" FontSize="20" Grid.Column="1"/>
+        <ListView x:Name="reviews" BorderBrush="LightBlue" Margin="65,115,66,184" MouseDoubleClick="mouseDoubleClickReviews" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date:" DisplayMemberBinding="{Binding date}" Width="100"/>
+                    <GridViewColumn Header="Review:" DisplayMemberBinding="{Binding message}" Width="500"/>
+                </GridView>
+            </ListView.View>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+        <Button  x:Name="AddReview" Content="Add review" HorizontalAlignment="Left" Margin="123,564,0,0" VerticalAlignment="Top" Width="118" Height="28" IsEnabled="False" Click="addReviewButton" Grid.Column="1"/>
+        <Button  x:Name="RemoveReview" Content="Remove review" HorizontalAlignment="Left" Margin="123,612,0,0" VerticalAlignment="Top" Width="118" Height="28" IsEnabled="False" Click="removeReviewButton" Grid.Column="1"/>
+        <Button  x:Name="RemoveComment" Content="Remove Comment" HorizontalAlignment="Left" Margin="123,651,0,0" VerticalAlignment="Top" Width="118" Height="28" IsEnabled="False" Click="removeCommentButton" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="54,25,0,0" TextWrapping="Wrap" Text=" Useful information" VerticalAlignment="Top" Height="38" Width="187" FontSize="20" FontWeight="Bold"/>
+        <Button x:Name="AddHostButton" Content="AddHost" HorizontalAlignment="Left" Margin="112,593,0,0" VerticalAlignment="Top" Width="118" Height="28" Click="addHostButton" Grid.Column="2"/>
+        <ComboBox x:Name="options" HorizontalAlignment="Left" Margin="112,78,0,0" VerticalAlignment="Top" Width="136" SelectedItem="{Binding Path=managerOptions}" SelectionChanged="ManagerOptionsComboBox_SelectionChanged" Grid.Column="2" Height="22"/>
+        <TextBlock x:Name="Options" HorizontalAlignment="Left" Margin="112,25,0,0" TextWrapping="Wrap" Text="Hosts or Orders" VerticalAlignment="Top" Grid.Column="2" Width="186" FontSize="20" Height="48"/>
+        <TextBlock x:Name="gainsTextBlock" HorizontalAlignment="Left" Margin="54,109,0,0" TextWrapping="Wrap" Text="The amount of gains you earned is: " VerticalAlignment="Top" Height="77" Width="246" FontSize="20"/>
+        <TextBlock x:Name="gainsShowTextBlock" HorizontalAlignment="Left" Margin="159,141,0,0" TextWrapping="Wrap" Text="{Binding Path=.}" VerticalAlignment="Top" Height="29" Width="69" FontSize="20" RenderTransformOrigin="0.529,0.052"/>
+        <TextBlock x:Name="wantedAreaTextBlock" HorizontalAlignment="Left" Margin="54,225,0,0" TextWrapping="Wrap" Text="The most wanted area in the guest requests is: " VerticalAlignment="Top" Height="83" Width="294" FontSize="20" RenderTransformOrigin="0.529,0.052"/>
+        <TextBlock x:Name="wantedAreaShowTextBlock" HorizontalAlignment="Left" Margin="231,248,0,0" TextWrapping="Wrap" Text="{Binding Path=.}" VerticalAlignment="Top" Height="34" Width="95" FontSize="20" RenderTransformOrigin="0.529,0.052"/>
+        <TextBlock x:Name="wantedTypeTextBlock" HorizontalAlignment="Left" Margin="54,364,0,0" TextWrapping="Wrap" Text="The most wanted resort type in your website is: " VerticalAlignment="Top" Height="100" Width="294" FontSize="20" RenderTransformOrigin="0.529,0.052"/>
+        <TextBlock x:Name="wantedTypeShowTextBlock" HorizontalAlignment="Left" Margin="218,389,0,0" TextWrapping="Wrap" Text="{Binding Path=.}" VerticalAlignment="Top" Height="37" Width="108" FontSize="20" RenderTransformOrigin="0.529,0.052"/>
+        <Button x:Name="backToHomePage" Content="Back to home page" HorizontalAlignment="Left" Margin="260,651,-45,0" VerticalAlignment="Top" Width="122" Height="28" Click="homePageClick" Grid.Column="2"/>
+
+        <!--<MediaElement Name="VideoControl" 
+              Source="https://images.app.goo.gl/ykUmZAJA1yqVrutm9" Margin="21,474,720,76" >
+        </MediaElement>-->
+    </Grid>
+
+</Window>
